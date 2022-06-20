@@ -1,0 +1,75 @@
+html{    
+    min-height: 100%;    
+    overflow: hidden;
+}
+body{    
+    height: 80vh;    
+    padding: 4em;    
+    color: #00ffff;   
+    background-color: #000000;
+}
+.line{    
+    position: relative;
+    top:50%;    
+    width: 15.6em;    
+    margin: 0 auto;    
+    border-right: 4px solid #ffffff;    
+    text-align: center;    
+    white-space: nowrap;    
+    overflow: hidden;    
+    transform: translateY(-35%);   
+     display: block;
+}
+/* animattion */
+.welcome-message-anim{    
+    animation: typeMsg 4s steps(40) 1s 1 normal both,
+    cursorAnim 1s steps(40) infinite normal;
+}
+@keyframes typeMsg{    
+    from{        
+        width: 0em;    
+    }    
+    to{        
+        width: 40em;    
+    }
+}
+@keyframes cursorAnim{    
+    from{        
+        border-right-color: #ffffff;
+        }    
+    to{       
+        border-right-color: transparent;    
+    }
+}
+/*  footer   */
+footer {    
+    background-color: #222;    
+    color: #fff;    
+    font-size: 24px;    
+    bottom: 0;    
+    position: fixed;    
+    left: 0;    
+    right: 0;    
+    text-align: center;    
+    z-index: 999;
+}
+footer p {    
+    margin: 10px 0;    
+    
+}
+footer .fa-heart{    
+    color: rgb(255, 255, 255);
+}
+footer .fa-instagram{  
+    color: #ffffff;
+}
+fotter .fa-linkedin{  
+    color:#0073b1;
+}
+footer .fa-codepen{  
+    color:#fff
+}
+footer a {    
+    color: #3c97bf;    
+    text-decoration: none;
+}/* footer  */
