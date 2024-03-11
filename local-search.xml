@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+  
+  
+  <entry>
+    <title>Pyspider ARM64(AARCH64)安装教程</title>
+    <link href="/2024/03/11/Pyspider_ARM64(AARCH64)_install/"/>
+    <url>/2024/03/11/Pyspider_ARM64(AARCH64)_install/</url>
+    
+    <content type="html"><![CDATA[<div align="center"><p><em><strong>注意：此教程仅通用于Ubuntu_22.04.3_Server_Arm64，树莓派(Raspberry Pi OS)原系统可能并不适用此教程</strong></em></p></div><h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><ul><li>硬件：SD卡读卡器、手、脑子(非常重要)</li><li>软件：BalenaEtcher(可用树莓派官方标准写入工具代替，个人认为BalenaEtcher更好用)、SSH工具(Xshell、MobaXterm或其他，个人比较爱用MobaXterm)、浏览器(Chrome、Edge等都行)</li></ul><h3 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h3><ul><li>笔者打包好的镜像文件<a href="https://www.123pan.com/s/LuI9-vKGsH.html">Ubuntu Server 22.04.3</a><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs 提取码">4cqW<br></code></pre></td></tr></table></figure><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs 注意">此版本为Ubuntu_22.04.3_Server_Arm64，<br>已集成:<br>Conda(miniforge3)、<br>Python3.6(虚拟环境内)、<br>Pyspider(虚拟环境内)、<br>Phantomjs(虚拟环境内，版本aarch64 2.1.1)<br>此版本帐号为ubuntu，密码(/root密码)：0000<br>这个可用于SSH或者正式登陆的帐号密码<br>Linux权限非常分明，如不知或不清楚可自行百度或请教老师、同学<br>此版本仅适用于SD卡大小为32GB或者更大容量的版本！<br></code></pre></td></tr></table></figure></li></ul><h3 id="安装系统"><a href="#安装系统" class="headerlink" title="安装系统"></a>安装系统</h3><ul><li>下载镜像文件(如果这个项目仍是树莓派4B来跑的话)，镜像架构：Arm64 Ubuntu镜像下载地址<a href="https://ubuntu.com/download">Download | Ubuntu</a>里面可自行寻找需要的系统</li><li>打开BalenaEtcher进行刷写系统，如有不知怎么用的可百度解决。</li><li>SSH远程连接，如果为Ubuntu Server，那么账号为ubuntu，密码为ubuntu，如果下载的是我的系统，那么账号为ubuntu，密码为0000，原版的Ubuntu Server第一次安装开机之后会让你重设密码，打密码的时候没有显示，不用担心，重设密码之后重新连接即可。</li></ul><h3 id="安装相应软件"><a href="#安装相应软件" class="headerlink" title="安装相应软件"></a>安装相应软件</h3><ul><li>安装相应软件<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs 更新命令">sudo apt update &amp;&amp; sudo apt upgrade -y<br></code></pre></td></tr></table></figure>如果更新过慢可自行换源，我的系统本身为清华源，拥有不错的下载更新速度</li></ul><h3 id="安装依赖软件"><a href="#安装依赖软件" class="headerlink" title="安装依赖软件"></a>安装依赖软件</h3><ul><li>安装依赖软件<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs 命令">sudo apt install wget gcc libssl-dev bzip2 curl make -y<br></code></pre></td></tr></table></figure>如果更新过慢可自行换源，我的系统本身为清华源，拥有不错的下载更新速度</li></ul><h3 id="安装Conda虚拟化工具"><a href="#安装Conda虚拟化工具" class="headerlink" title="安装Conda虚拟化工具"></a>安装Conda虚拟化工具</h3><p>你当然可以选择安装<a href="https://www.anaconda.com/download/">Anaconda</a>，但是那将面临大量的资源重构 (这个东西可没有arm架构的东西) ，如果你有实力可以试着更改一下，当然也可以使用<a href="https://docs.anaconda.com/free/miniconda/index.html">miniconda</a>，这个东西已经八百年不更新了，如果想用这个那么就可能意味着要自己编译资源，所以我推荐使用<a href="https://github.com/conda-forge/miniforge">miniforge3</a>，这个东西本身就是为aarch64编译的conda虚拟环境，理论使用方法通用于<a href="https://www.anaconda.com/download/">Anaconda</a>，但是可能存在依赖或者其他的问题，但是对于PySpider已经够用，下载地址:Miniforge3-23.10.0-0-Linux-aarch64.sh(速度可能有些慢，毕竟来自GitHub，可适当开启加速器加速)</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs 终端键入">curl -o Miniforge3-23.10.0-0-Linux-aarch64.sh https://ghproxy.net/https:/github.com/conda-forge/miniforge/releases/download/23.10.0-0/Miniforge3-23.10.0-0-Linux-aarch64.sh &amp;&amp; sudo chmod 777 Miniforge3-23.10.0-0-Linux-aarch64.sh &amp;&amp; bash Miniforge3-23.10.0-0-Linux-aarch64.sh<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>使用Cloudflare免费加速Github Pages</title>
+    <link href="/2024/03/11/article_one/"/>
+    <url>/2024/03/11/article_one/</url>
+    
+    <content type="html"><![CDATA[<div style="margin-top: -2px;"></div>Github Page 在国内访问速度非常慢，而且图片加载不出来，迫于无奈在网上找到了一个能白嫖加速 Github Page 的办法，就是套一层 Cloudflare CDN，这里记录一下操作步骤。<hr style="height:2px;border:none;border-top:2px dashed #e6e6fa;"><p>需要一个域名，可以在阿里云或者华为云购买，也可以在freenom.com注册一个免费的域名。<br><img src="/img/yuming.png"></p><p>注册一个<a href="https://dash.cloudflare.com/login" target="top">Cloudflare</a>账号</p><div style="display: flex; justify-content: center;">    <a class="fancybox fancybox.image" href="/img/english.png" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url" data-fancybox="default" rel="default" title="english" data-caption="english"><img src="/img/english.png" alt="english" height="30"></a>    <p>&nbsp;&nbsp;---&gt;&nbsp;&nbsp;</p>    <a class="fancybox fancybox.image" href="/img/chinese.png" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url" data-fancybox="default" rel="default" title="chinese" data-caption="chinese"><img src="/img/chinese.png" alt="chinese" height="30"></a></div><p>注册账号<br><img src="/img/zhuce.png"><br><img src="/img/zhuce2.png"></p><div style="display: flex; justify-content: center;">    <p>点击添加站点</p><a class="fancybox fancybox.image" href="/img/tjzd.png" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url" data-fancybox="default" rel="default" title="tjzd" data-caption="tjzd"><img src="/img/tjzd.png" alt="tjzd" height="30"></a></div><p><img src="/img/ssym.png"><br><img src="/img/ssym2.png"><br>打开域名控制台并点击域名<br><img src="/img/ymkzt.png"><br>点击修改<br><img src="/img/dnsxg.png"><br>然后<br><img src="/img/dnsxg2.png" alt="注：DNS服务器的两个为刚才Cloudflare 名称服务器获取的两个NS值"><br>点击确定然后在等一会便可</p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>大部分命令</title>
+    <link href="/2024/03/11/mingling/"/>
+    <url>/2024/03/11/mingling/</url>
+    
+    <content type="html"><![CDATA[<div align="center"><h2 id="HyperOS-移植项目"><a href="#HyperOS-移植项目" class="headerlink" title="HyperOS 移植项目"></a>HyperOS 移植项目</h2></div><h5 id="创建页面"><a href="#创建页面" class="headerlink" title="创建页面"></a>创建页面</h5><figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bat">hexo new page &quot;要创建的页面&quot;<br></code></pre></td></tr></table></figure><h5 id="启动本地服务"><a href="#启动本地服务" class="headerlink" title="启动本地服务"></a>启动本地服务</h5><figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bat">hexo s<br></code></pre></td></tr></table></figure><h5 id="生成静态文件"><a href="#生成静态文件" class="headerlink" title="生成静态文件"></a>生成静态文件</h5><figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bat">hexo g<br></code></pre></td></tr></table></figure><h5 id="上传部署网站"><a href="#上传部署网站" class="headerlink" title="上传部署网站"></a>上传部署网站</h5><figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bat">hexo d<br></code></pre></td></tr></table></figure><h5 id="清除缓存"><a href="#清除缓存" class="headerlink" title="清除缓存"></a>清除缓存</h5><figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bat">hexo clean<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="/2024/03/08/hello-world/"/>
+    <url>/2024/03/08/hello-world/</url>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  
+</search>
