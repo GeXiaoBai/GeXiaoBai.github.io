@@ -24,7 +24,7 @@
 <meta property="og:description" content="注意：此教程仅通用于Ubuntu_22.04.3_Server_Arm64，树莓派(Raspberry Pi OS)原系统可能并不适用此教程   准备 硬件：SD卡读卡器、手、脑子(非常重要) 软件：BalenaEtcher(可用树莓派官方标准写入工具代替，个人认为BalenaEtcher更好用)、SSH工具(Xshell、MobaXterm或其他，个人比较爱用MobaXterm)、浏览器(C">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-03-11T03:53:23.059Z">
-<meta property="article:modified_time" content="2024-03-19T09:18:33.421Z">
+<meta property="article:modified_time" content="2024-03-20T05:56:36.152Z">
 <meta property="article:author" content="鸽小白">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -257,7 +257,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.4k 字
+          1.5k 字
         
       </span>
     
@@ -355,7 +355,7 @@
 <li>1.创建Python虚拟环境<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs 终端键入">conda create -n pyspider python=3.6.7<br></code></pre></td></tr></table></figure>
 接下来按照要求输入“y”</li>
 <li>2.进入Python虚拟环境(方法为：source activate your_env_name)<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs 终端键入">conda activate pyspider<br></code></pre></td></tr></table></figure></li>
-<li>3.退出Python虚拟环境(方法为：source deactivate)<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs 终端键入">conda deactivate<br></code></pre></td></tr></table></figure></li>
+<li>3.退出Python虚拟环境(需要时可退出环境，方法为：source deactivate)<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs 终端键入">conda deactivate<br></code></pre></td></tr></table></figure></li>
 </ul>
 <h3 id="安装Python包-Pyspider-PhantomJS"><a href="#安装Python包-Pyspider-PhantomJS" class="headerlink" title="安装Python包(Pyspider &amp; PhantomJS)"></a>安装Python包(Pyspider &amp; PhantomJS)</h3><ul>
 <li>1.给PIP换源<br>检查当前混啊经是否存在pip，如果不存在，则需要安装pip<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs 安装pip，终端键入">conda install pip<br></code></pre></td></tr></table></figure>
@@ -365,7 +365,7 @@
 <li>3.安装PhantomJS 2.1.1 for arm64<br>本身的PhantomJS并没有相应版本的PhantomJS，所以我们需要安装自编译的版本，正好有人维护这个东西，<a target="_blank" rel="noopener" href="https://github.com/fg2it/phantomjs-on-raspberry/releases">PhantomJS 2.1.1 for arm64</a><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs 终端键入">wget https://github.com/fg2it/phantomjs-on-raspberry/releases/download/v2.1.1-jessie-stretch-arm64/phantomjs <br></code></pre></td></tr></table></figure>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs 终端键入">sudo mv phantomjs /usr/local/bin/ &amp;&amp; sudo chmod +x phantomjs<br></code></pre></td></tr></table></figure></li>
 </ul>
-<h3 id="安装Mysql服务器以及创建相应的数据库和链接数据库"><a href="#安装Mysql服务器以及创建相应的数据库和链接数据库" class="headerlink" title="安装Mysql服务器以及创建相应的数据库和链接数据库"></a>安装Mysql服务器以及创建相应的数据库和链接数据库</h3><h5 id="哎-，没想到吧，这鬼东西连接数据库呢吧-▽-我也不想写了，给你几个参考链接，大差不差"><a href="#哎-，没想到吧，这鬼东西连接数据库呢吧-▽-我也不想写了，给你几个参考链接，大差不差" class="headerlink" title="哎~，没想到吧，这鬼东西连接数据库呢吧 (^▽^ ),我也不想写了，给你几个参考链接，大差不差"></a>哎~，没想到吧，这鬼东西连接数据库呢吧 (^▽^ ),我也不想写了，给你几个参考链接，大差不差</h5><ul>
+<h3 id="安装Mysql服务器以及创建相应的数据库和链接数据库"><a href="#安装Mysql服务器以及创建相应的数据库和链接数据库" class="headerlink" title="安装Mysql服务器以及创建相应的数据库和链接数据库"></a>安装Mysql服务器以及创建相应的数据库和链接数据库</h3><h5 id="哎-，没想到吧，这鬼东西还需要连接数据库呢吧-▽-我也不想写了，给你几个参考链接，大差不差"><a href="#哎-，没想到吧，这鬼东西还需要连接数据库呢吧-▽-我也不想写了，给你几个参考链接，大差不差" class="headerlink" title="哎~，没想到吧，这鬼东西还需要连接数据库呢吧 (^▽^ ),我也不想写了，给你几个参考链接，大差不差"></a>哎~，没想到吧，这鬼东西还需要连接数据库呢吧 (^▽^ ),我也不想写了，给你几个参考链接，大差不差</h5><ul>
 <li>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_18301257/article/details/112209931">安装数据库</a></li>
 <li>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/paulluo0739/article/details/94446234">pyspider使用mysql作为任务数据库</a></li>
 </ul>
