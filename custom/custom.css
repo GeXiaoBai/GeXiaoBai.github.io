@@ -49,7 +49,7 @@ html::-webkit-scrollbar-corner {
 /* 设置背景图片 */
 body
 {
-	background: url(/img/background.jpg);
+	background: url(/img/default.png);
 	background-position: center center; 
 	background-repeat: no-repeat; 
 	background-attachment: fixed;
