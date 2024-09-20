@@ -21,7 +21,6 @@ body{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: center; /* 确保容器内的内容垂直居中 */
 }
 .box{
     width: 350px;
@@ -128,7 +127,7 @@ body{
 }
 
 .two {
-  color: #f038ff; 
+  color: #ffffff; 
 }
 
 .three {
