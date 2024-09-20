@@ -1,0 +1,162 @@
+*{
+    /* 初始化 */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    /* 100%窗口高度 */
+    min-height: 100vh;
+    /* 弹性布局 水平+垂直居中 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*背景图为https://www.freeimg.cn/i/2024/06/03/665d55e4d7f1d.png*/ 
+    background-image: url('https://www.freeimg.cn/i/2024/06/03/665d55e4d7f1d.png'); 
+    flex-direction: column; /* 使内容垂直排列 */
+}
+
+.container{
+    /* 弹性布局 允许换行 水平居中 */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center; /* 确保容器内的内容垂直居中 */
+}
+.box{
+    width: 350px;
+    margin: 10px;
+    text-align: center;
+    /* 相对定位 */
+    position: relative;
+    /* 开启3D效果 */
+    transform-style: preserve-3d;
+    /* 设置视距 */
+    perspective: 3000px;
+}
+.box .front{
+    background-color: #fff;
+    width: 100%;
+    height: 220px;
+    /* 弹性布局 垂直排列 垂直居中 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* 阴影 */
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    /* 设置过渡 */
+    transition: 0.5s ease;
+    /*透明背景*/
+    background: rgba(255, 255, 255, 0.1);
+}
+.box .front .icon{
+    height: 100px;
+}
+.box .front .icon i,
+.box .front span{
+    /* 渐变背景 */
+    background: linear-gradient(220deg,#02dbb0,#007adf);
+    /* 以区块内的文字作为裁剪区域向外裁剪，文字的背景即为区块的背景，文字之外的区域都将被裁剪掉 */
+    -webkit-background-clip: text;
+    /* 将文字透明镂空 */
+    -webkit-text-fill-color: transparent;
+}
+.box .front .icon i{
+    
+    font-size: 65px;
+    font-weight: 900;
+}
+.box .front span,
+.box .back span{
+    font-size: 22px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.box .back{
+    /* 绝对定位 */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 220px;
+    background: linear-gradient(220deg,#02dbb0,#007adf);
+    padding: 30px;
+    color: #fff;
+    /* 默认不透明度为0 */
+    opacity: 0;
+    /* 默认位置下移并旋转-90度 */
+    transform: translateY(110px) rotateX(-90deg);
+    /* 设置过渡 */
+    transition: 0.5s ease;
+}
+.box .back p{
+    margin-top: 12px;
+    /* 文本两端对齐 */
+    text-align: justify;
+    line-height: 23px;
+}
+/* 鼠标移入卡片，两个面做出相应变化 */
+.box:hover .front{
+    opacity: 0;
+    transform: translateY(-110px) rotateX(90deg);
+}
+.box:hover .back{
+    opacity: 1;
+    transform: translateY(0) rotateX(0);
+}
+
+#neon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 100vh;
+  background: #031628; 
+}
+
+.btn {
+  border: 1px solid;
+  background-color: transparent;
+  text-transform: uppercase;
+  font-size: 14px;
+  padding: 10px 20px;
+  font-weight: 300;
+}
+
+.one {
+  color: #ffffff;
+}
+
+.two {
+  color: #f038ff; 
+}
+
+.three {
+  color: #b9e769;
+}
+
+.btn:hover {
+  color: white;
+  border: 0;
+}
+
+.one:hover {
+  background-color: #4cc9f0;
+  -webkit-box-shadow: 10px 10px 99px 6px rgba(76,201,240,1);
+  -moz-box-shadow: 10px 10px 99px 6px rgba(76,201,240,1);
+  box-shadow: 10px 10px 99px 6px rgba(76,201,240,1);
+}
+
+.two:hover {
+  background-color: #f038ff;
+  -webkit-box-shadow: 10px 10px 99px 6px rgba(240, 56, 255, 1);
+  -moz-box-shadow: 10px 10px 99px 6px rgba(240, 56, 255, 1);
+  box-shadow: 10px 10px 99px 6px rgba(240, 56, 255, 1);
+}
+
+.three:hover {
+  background-color: #b9e769;
+  -webkit-box-shadow: 10px 10px 99px 6px rgba(185, 231, 105, 1);
+  -moz-box-shadow: 10px 10px 99px 6px rgba(185, 231, 105, 1);
+  box-shadow: 10px 10px 99px 6px rgba(185, 231, 105, 1);
+}
