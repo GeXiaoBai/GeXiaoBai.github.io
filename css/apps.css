@@ -1,23 +1,26 @@
 /* 引入网络字体（Poppins） */
 @import url("http://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap");
 
-*{
+* {
     /* 初始化 */
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Poppins";
+    font-family: "Poppins", sans-serif;
 }
-body{
+
+body {
     /* 100%窗口高度 */
     min-height: 100vh;
     /* 弹性布局 水平+垂直居中 */
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #16162600;
+    /* 为了展示效果，背景色改为深色，原代码为透明 */
+    background-color: #161626; 
 }
-.container{
+
+.container {
     position: relative;
     display: flex;
     justify-content: center;
@@ -25,27 +28,29 @@ body{
     flex-wrap: wrap;
     z-index: 1;
 }
-.container .card{
+
+.container .card {
     /* 相对定位 */
     position: relative;
     width: 280px;
     height: 400px;
     margin: 30px;
     /* 阴影 */
-    box-shadow: 20px 20px 50px rgba(0,0,0,0.5);
+    box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
     border-radius: 15px;
-    background-color: rgba(255,255,255,0.1);
+    background-color: rgba(255, 255, 255, 0.1);
     /* 溢出隐藏 */
     overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-top: 1px solid rgba(255,255,255,0.5);
-    border-left: 1px solid rgba(255,255,255,0.5);
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
     /* 背景模糊 */
     backdrop-filter: blur(5px);
 }
-.container .card .content{
+
+.container .card .content {
     padding: 18px;
     text-align: center;
     /* 默认下移+隐藏 */
@@ -54,12 +59,14 @@ body{
     /* 动画过渡 */
     transition: 0.5s;
 }
-.container .card:hover .content{
+
+.container .card:hover .content {
     /* 鼠标移入，上移+显示 */
     transform: translateY(0);
     opacity: 1;
 }
-.container .card .content h2{
+
+.container .card .content h2 {
     position: absolute;
     top: -24px;
     right: 24px;
@@ -67,49 +74,60 @@ body{
     color: rgba(255, 255, 255, 0.484);
     /* pointer-events: none; */
 }
-.container .card .card-icon{
+
+.container .card .card-icon {
     position: absolute;
-    top: 100px;
+    /* 修正了重复的 position: absolute */
+    top: 0; 
+    left: 0;
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-  position: absolute;  justify-content: center;
+    justify-content: center;
     transition: 0.5s;
-    width: 100%;
 }
-.container .card .card-icon img{
+
+.container .card .card-icon img {
     width: 130px;
     height: 130px;
     margin-bottom: 10px;
     object-fit: contain;
 }
-.container .card .card-icon h2{
+
+.container .card .card-icon h2 {
     font-size: 35px;
     color: #ffffffd6;
     margin: 0;
 }
-.container .card:hover .card-icon{
+
+.container .card:hover .card-icon {
     opacity: 0;
     /* 鼠标移入时隐藏 */
 }
-.container .card .content h3{
+
+.container .card .content h3 {
     font-size: 28px;
     color: #fff;
     top: -20px;
 }
-.container .card .content p{
+
+.container .card .content p {
     font-size: 16px;
     color: #fff;
     font-weight: 300;
     margin: 10px 0 15px 0;
 }
-.container .card .content pp{
+
+.container .card .content pp {
     font-size: 12px;
     color: #fff;
     font-weight: 300;
     display: block;
 }
-.container .card .content a{
+
+.container .card .content a {
     position: relative;
     display: inline-block;
     padding: 8px 20px;
@@ -119,5 +137,21 @@ body{
     border-radius: 17px;
     text-decoration: none;
     font-weight: 500;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* 补全的 img2 配置 */
+.container .card .card-icon img2 {
+    width: 130px;
+    height: 130px;
+    margin-bottom: 10px;
+    object-fit: contain;
+    /* --- 补全配置开始 --- */
+    position: absolute;
+    top: -24px;
+    left: 24px;
+    opacity: 0.484;
+    pointer-events: none;
+    z-index: 10;
+    /* --- 补全配置结束 --- */
 }
